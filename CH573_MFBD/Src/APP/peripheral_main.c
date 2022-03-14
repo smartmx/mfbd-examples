@@ -17,10 +17,10 @@
 /*********************************************************************
  * GLOBAL TYPEDEFS
  */
-__attribute__((aligned(4))) u32 MEM_BUF[BLE_MEMHEAP_SIZE/4];
+__attribute__((aligned(4))) u32 MEM_BUF[BLE_MEMHEAP_SIZE / 4];
 
 #if (defined (BLE_MAC)) && (BLE_MAC == TRUE)
-u8C MacAddr[6] = {0x84,0xC2,0xE4,0x03,0x02,0x02};
+u8C MacAddr[6] = {0x84, 0xC2, 0xE4, 0x03, 0x02, 0x02};
 #endif
 
 /*******************************************************************************
@@ -34,9 +34,10 @@ uint32_t tt = 0;
 __attribute__((section(".highcode")))
 void Main_Circulation()
 {
-  while(1){
-    TMOS_SystemProcess( );
-  }
+    while (1)
+    {
+        TMOS_SystemProcess();
+    }
 }
 extern void key_init();
 /*******************************************************************************
@@ -46,29 +47,29 @@ extern void key_init();
 * Output         : None
 * Return         : None
 *******************************************************************************/
-int main( void ) 
+int main(void)
 {
 #if (defined (DCDC_ENABLE)) && (DCDC_ENABLE == TRUE)
-  PWR_DCDCCfg( ENABLE );
+    PWR_DCDCCfg(ENABLE);
 #endif
-  SetSysClock( CLK_SOURCE_PLL_60MHz );
+    SetSysClock(CLK_SOURCE_PLL_60MHz);
 #if (defined (HAL_SLEEP)) && (HAL_SLEEP == TRUE)
-  GPIOA_ModeCfg( GPIO_Pin_All, GPIO_ModeIN_PU );
-  GPIOB_ModeCfg( GPIO_Pin_All, GPIO_ModeIN_PU );
+    GPIOA_ModeCfg(GPIO_Pin_All, GPIO_ModeIN_PU);
+    GPIOB_ModeCfg(GPIO_Pin_All, GPIO_ModeIN_PU);
 #endif
 #ifdef DEBUG
-  GPIOA_SetBits(bTXD1);
-  GPIOA_ModeCfg(bTXD1, GPIO_ModeOut_PP_5mA);
-  UART1_DefInit( );
-#endif   
-  PRINT("%s\n",VER_LIB);
-  CH57X_BLEInit( );
-	HAL_Init( );
-	GAPRole_PeripheralInit( );
-	Peripheral_Init( );
+    GPIOA_SetBits(bTXD1);
+    GPIOA_ModeCfg(bTXD1, GPIO_ModeOut_PP_5mA);
+    UART1_DefInit();
+#endif
+    PRINT("%s\n", VER_LIB);
+    CH57X_BLEInit();
+    HAL_Init();
+    GAPRole_PeripheralInit();
+    Peripheral_Init();
 
-	key_init();
-  Main_Circulation();
+    key_init();
+    Main_Circulation();
 }
 
 /******************************** endfile @ main ******************************/

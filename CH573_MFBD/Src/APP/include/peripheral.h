@@ -3,8 +3,8 @@
 * Author             : WCH
 * Version            : V1.0
 * Date               : 2018/12/11
-* Description        : 
-            
+* Description        :
+
 *******************************************************************************/
 
 #ifndef PERIPHERAL_H
@@ -34,10 +34,10 @@ extern "C"
  */
 typedef struct
 {
-  uint16 connHandle;           // Connection handle of current connection
-  uint16 connInterval;
-  uint16 connSlaveLatency;
-  uint16 connTimeout;
+    uint16 connHandle;           // Connection handle of current connection
+    uint16 connInterval;
+    uint16 connSlaveLatency;
+    uint16 connTimeout;
 } peripheralConnItem_t;
 
 
@@ -48,12 +48,12 @@ typedef struct
 /*
  * Task Initialization for the BLE Application
  */
-extern void Peripheral_Init( void );
+extern void Peripheral_Init(void);
 
 /*
  * Task Event Processor for the BLE Application
  */
-extern uint16 Peripheral_ProcessEvent( uint8 task_id, uint16 events );
+extern uint16 Peripheral_ProcessEvent(uint8 task_id, uint16 events);
 
 /*********************************************************************
 *********************************************************************/
@@ -62,4 +62,4 @@ extern uint16 Peripheral_ProcessEvent( uint8 task_id, uint16 events );
 }
 #endif
 
-#endif 
+#endif
